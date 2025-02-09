@@ -1,0 +1,44 @@
+
+{% load static %}
+<div class="container-xxl position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restaurently</h1>
+            <!-- <img src="{% static 'img/logo.png' %}" alt="Logo"> -->
+             
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 pe-4">
+                <a href="{% url 'index' %}" class="nav-item nav-link active"><i class="bi bi-house"></i></a>
+                <a href="{% url 'cart' %}" class="nav-item nav-link active"><i class="bi bi-basket2"></i></a>
+                <!-- <p id="cart-total" class="cart-style">{{ cartItems|default:0 }}</p> -->
+                <a href="{% url 'menu' %}" class="nav-item nav-link active"><i class="bi bi-menu-button-wide-fill"></i></a>
+                {% if user.is_authenticated %}
+                <h2 class="nav-item nav-link active">Hello,{{user.first_name}}</h2>
+                            <a href="{% url 'logout' %}" class="nav-item nav-link active"><i class="bi bi-door-closed"></i></a>
+                            {% else %}
+                            <a href="{% url 'account_login' %}" class="nav-item nav-link active"><i class="bi bi-door-open"></i></a>
+                {% endif %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <div class="dropdown-menu m-0">
+                        <a href="{% url 'booking' %}" class="dropdown-item">Booking</a>
+                        <a href="{% url 'service' %}"  class="dropdown-item">Service</a>
+                        <a href="{% url 'team' %}" class="dropdown-item">Our Team</a>
+                        <a href="{% url 'about' %}" class="dropdown-item">About</a>
+                        <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+                        <a href="{% url 'contact' %}" class="dropdown-item">Contact</a>
+                        <a href="{% url 'my_table' %}" class="dropdown-item">My Table</a>
+                        <a href="{% url 'checkout' %}" class="dropdown-item">checkout</a>
+                    </div>
+                </div>
+
+                </div>
+                
+            <a href="{% url 'booking' %}" class="btn btn-primary py-2 px-4">Book A Table</a>
+            </div>
+        </nav>
+    </div>
